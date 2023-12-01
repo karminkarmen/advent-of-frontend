@@ -4,10 +4,8 @@ export class GiftRegistry {
   addGift(childId: number, giftName: string): void {
     const giftsList = this.registry.get(childId) || new Set();
 
-    if (!giftsList.has(giftName)) {
-      giftsList.add(giftName);
-      this.registry.set(childId, giftsList)
-    }
+    giftsList.add(giftName);
+    this.registry.set(childId, giftsList);
   }
 
   removeGift(childId: number, giftName: string): void {
