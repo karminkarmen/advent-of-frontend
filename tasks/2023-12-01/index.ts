@@ -1,15 +1,15 @@
 export class GiftRegistry {
-  registry = new Map<number, Set<string>>();
+  #registry = new Map<number, Set<string>>();
 
   addGift(childId: number, giftName: string): void {
-    const giftsList = this.registry.get(childId) || new Set();
+    const giftsList = this.#registry.get(childId) || new Set();
 
     giftsList.add(giftName);
-    this.registry.set(childId, giftsList);
+    this.#registry.set(childId, giftsList);
   }
 
   removeGift(childId: number, giftName: string): void {
-    const giftsList = this.registry.get(childId);
+    const giftsList = this.#registry.get(childId);
 
     if (!giftsList) {
       throw Error('There is no list of gifts for child with specified id');
@@ -22,14 +22,14 @@ export class GiftRegistry {
     giftsList.delete(giftName);
 
     if (giftsList.size) {
-      this.registry.set(childId, giftsList);
+      this.#registry.set(childId, giftsList);
     } else {
-      this.registry.delete(childId);
+      this.#registry.delete(childId);
     }
   }
 
   getGiftsForChild(childId: number): string[] {
-    const giftsList = this.registry.get(childId);
+    const giftsList = this.#registry.get(childId);
 
     if (!giftsList) {
       throw Error('There is no list of gifts for child with specified id');
