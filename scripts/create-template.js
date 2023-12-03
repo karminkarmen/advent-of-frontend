@@ -21,6 +21,9 @@ if (!fs.existsSync(folderPath)) {
     const testFilePath = path.join(folderPath, 'index.test.ts');
     fs.writeFileSync(testFilePath, '// Tutaj skopiuj testy dla zadania. Uruchom je poleceniem `npm test`');
 
+    const taskContentFilePath = path.join(folderPath, 'TASK.md');
+    fs.writeFileSync(taskContentFilePath, '');
+
     console.log(`Przygotowano szablon na zadanie w folderze tasks/${folderName} 🎄`)
 } else {
     console.log(`Folder na dzisiejsze zadania już istnieje (tasks/${folderName}) 🤔`);
