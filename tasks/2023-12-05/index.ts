@@ -1,30 +1,30 @@
 export class ChristmasEmitter {
   #events: Record<string, any[]> = {};
 
-  public on<T>(eventName: string, eventCb: T) {
-    const currentEventCbs = this.#events[eventName];
-    this.#events[eventName] = currentEventCbs ? [...currentEventCbs, eventCb] : [eventCb];
+  on<T>(eventName: string, eventCb: T) {
+    const eventCallbacks = this.#events[eventName];
+
+    this.#events[eventName] = eventCallbacks ? [...eventCallbacks, eventCb] : [eventCb];
   }
 
-  public off<T>(eventName: string, eventCb: T) {
-    const currentEventCbs = this.#events[eventName];
+  off<T>(eventName: string, eventCb: T) {
+    const eventCallbacks = this.#events[eventName];
 
-    if (!currentEventCbs) {
-      throw new Error('There is no event with this name to remove this callback');
+    if (!eventCallbacks) {
+      throw new Error('There is no event with this name to remove provided callback');
     }
 
-    const filteredCbs = currentEventCbs.filter(fn => fn !== eventCb);
-    
+    const filteredCbs = eventCallbacks.filter(callback => callback !== eventCb);
     this.#events[eventName] = filteredCbs;
   }
 
-  public emit(eventName: string) {
+  emit(eventName: string) {
     const currentEventCbs = this.#events[eventName];
 
     if (!currentEventCbs) {
       throw new Error('There is no event with this name to emit');
     }
 
-    currentEventCbs.forEach(fn => fn());
+    currentEventCbs.forEach(callback => callback());
   }
 }
