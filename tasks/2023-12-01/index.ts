@@ -1,14 +1,14 @@
 export class GiftRegistry {
   #registry = new Map<number, Set<string>>();
 
-  addGift(childId: number, giftName: string): void {
+  public addGift(childId: number, giftName: string): void {
     const giftsList = this.#registry.get(childId) || new Set();
 
     giftsList.add(giftName);
     this.#registry.set(childId, giftsList);
   }
 
-  removeGift(childId: number, giftName: string): void {
+  public removeGift(childId: number, giftName: string): void {
     const giftsList = this.#registry.get(childId);
 
     if (!giftsList) {
@@ -28,7 +28,7 @@ export class GiftRegistry {
     }
   }
 
-  getGiftsForChild(childId: number): string[] {
+  public getGiftsForChild(childId: number): string[] {
     const giftsList = this.#registry.get(childId);
 
     if (!giftsList) {

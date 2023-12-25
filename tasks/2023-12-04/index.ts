@@ -6,7 +6,7 @@ export function memoize<ParamType, ReturnType>(complexCalculation: ComplexCalcul
     throw Error('Function to be memoized must be a function.');
   };
 
-  const cache = new Map<ParamType, ReturnType>;
+  const cache = new Map<ParamType, ReturnType>();
 
   return (param: ParamType): ReturnType => {
     const cachedValue = cache.get(param);
