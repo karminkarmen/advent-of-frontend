@@ -36,6 +36,6 @@ export class Machine {
   }
 
   public performAudit(): string[] {
-    return this.#stateHistory.map((state, key) => `Order #${key + 1} - ${state}`)
+    return this.#stateHistory.map((state, key) => `Order #${key + 1} - ${state}`);
   }
 }
