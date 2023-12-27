@@ -31,5 +31,6 @@ export class Equipment {
 
   disposeTools() {
     this.#tools.forEach(tool => tool.dispose());
+    this.#tools = [];
   }
 }
