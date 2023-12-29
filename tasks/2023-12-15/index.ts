@@ -1,9 +1,10 @@
 export function* storageQuery(range: number, gift: string, resolver: (n: number, gift: string) => boolean): Generator<number> {
   if (resolver(range, gift)) {
-    const sectionsCount = range/gift.length;
+    const giftSize = gift.length;
+    const sectionsCount = range/giftSize;
 
     for(let i = 1; i <= sectionsCount; i++) {
-      yield i*gift.length;
+      yield i*giftSize;
     }
   }
 }
