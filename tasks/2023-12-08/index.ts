@@ -41,13 +41,10 @@ export class LengthStrategy implements Sorter {
 }
 
 export class LetterSorter {
-  #sorter: Sorter;
-
-  constructor(sorter: Sorter) {
-    this.#sorter = sorter;
+  constructor(private sorter: Sorter) {
   }
 
   sortLetters(letters: Letters): Letters {
-    return this.#sorter.sort(letters);
+    return this.sorter.sort(letters);
   }
 }
