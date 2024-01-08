@@ -17,11 +17,6 @@ export class RateLimiter {
       }, this.intervalMs);
     }
 
-
-    if (this.requestsCount <= this.maxRequests) {
-      return true;
-    }
-
-    return false;
+    return this.requestsCount <= this.maxRequests;
   }
 }
